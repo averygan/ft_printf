@@ -23,5 +23,7 @@ int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_putnbr(int n);
 int	ft_putunsigned(unsigned int n);
+int	ft_puthex(unsigned int n, char c);
+int	ft_toupper(int c);
 
 #endif

@@ -35,6 +35,14 @@ int	ft_putstr(char *s)
 	return (count);
 }
 
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	else
+		return (c);
+}
+
 /* Functions to parse numbers*/
 int	ft_putnbr(int n)
 {
@@ -72,4 +80,28 @@ int	ft_putunsigned(unsigned int n)
 	}
 	else
 		return (count + ft_putchar (n + '0'));
+}
+
+int	ft_puthex(unsigned int n, char c)
+{
+	char *hex;
+	int	base;
+	int	count;
+
+	hex = "0123456789abcdef";
+	count = 0;
+	base = 16;
+	if (n > base)
+	{
+		count += ft_puthex(n / base, c);
+		return (count + ft_puthex(n % base, c));
+	}
+	else
+	{
+		if (c == 'x')
+			return (count + ft_putchar(hex[n]));
+		else
+			return (count + ft_putchar(ft_toupper(hex[n])));
+	}
+	return (count);
 }
