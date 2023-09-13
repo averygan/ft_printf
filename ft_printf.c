@@ -26,13 +26,17 @@ int	ft_parseformat(char format, va_list args)
 	else if (format == '%')
 		count += ft_putchar('%');
 	else if (format == 'u')
-		ft_putunsigned(va_arg(args, unsigned int));
-	//if (format == 'p')
-	else if (format == 'x')
-		count += ft_puthex(va_arg(args, unsigned int), 'x');
-	else if (format == 'X')
-		count += ft_puthex(va_arg(args, unsigned int), 'X');
-	else 
+		ft_putunsign(va_arg(args, size_t));
+	else if (format == 'x' || format == 'X')
+		count += ft_puthex(va_arg(args, size_t), format);
+	else if (format == 'p')
+	{
+		/* add logic for null pointer */
+		write (1, "0x", 2);
+		count += 2;
+		count += ft_puthex(va_arg(args, size_t), 'x');
+	}
+	else
 		count += ft_putchar(format);
 	return (count);
 }
@@ -61,13 +65,14 @@ int	main(void)
 {
 	int	digits;
 	digits = 0;
-	char s[] = "bye!";
+	char *s;
+	s = NULL;
 	/*My printf*/
 	printf("My printf:\n");
-	digits = ft_printf("This is a string %X\n", -10090);
+	digits = ft_printf("This is a string %p\n", s);
 	printf("Chars printed: %d\n\n", digits);
 	/*Original printf*/
 	printf("Original printf:\n");
-	digits = printf("This is a string %X\n", -10090);
+	digits = printf("This is a string %p\n", s);
 	printf("Chars printed: %d\n", digits);
 }

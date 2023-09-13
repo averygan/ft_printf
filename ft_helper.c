@@ -26,6 +26,12 @@ int	ft_putstr(char *s)
 
 	i = 0;
 	count = 0;
+	if (!s)
+	{
+		write (1, "(null)", 6);
+		count += 6;
+		return (count);
+	}
 	while (s[i])
 	{
 		write (1, &s[i], 1);
@@ -68,21 +74,21 @@ int	ft_putnbr(int n)
 		return (count + ft_putchar(n + '0'));
 }
 
-int	ft_putunsigned(unsigned int n)
+int	ft_putunsign(unsigned int n)
 {
 	int	count;
 
 	count = 0;
 	if (n > 9)
 	{
-		count += ft_putunsigned(n / 10);
-		return (count + ft_putunsigned(n % 10));
+		count += ft_putunsign(n / 10);
+		return (count + ft_putunsign(n % 10));
 	}
 	else
 		return (count + ft_putchar (n + '0'));
 }
 
-int	ft_puthex(unsigned int n, char c)
+int	ft_puthex(size_t n, char c)
 {
 	char *hex;
 	int	base;

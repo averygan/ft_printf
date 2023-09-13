@@ -19,11 +19,14 @@
 # include <unistd.h>
 # include <string.h>
 
+/*help functions*/
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
-int	ft_putnbr(int n);
-int	ft_putunsigned(unsigned int n);
-int	ft_puthex(unsigned int n, char c);
 int	ft_toupper(int c);
+
+/*parse numbers*/
+int	ft_putnbr(int n);
+int	ft_putunsign(unsigned int n);
+int	ft_puthex(size_t n, char c);
 
 #endif
