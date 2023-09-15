@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <string.h>
 
-/*help functions*/
+/*helper functions*/
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
 int	ft_toupper(int c);
@@ -28,5 +28,8 @@ int	ft_toupper(int c);
 int	ft_putnbr(int n);
 int	ft_putunsign(unsigned int n);
 int	ft_puthex(size_t n, char c);
+int	ft_putpointer(size_t n);
+
+int	ft_printf(const char *str, ...);
 
 #endif

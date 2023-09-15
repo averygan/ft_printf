@@ -26,26 +26,21 @@ int	ft_parseformat(char format, va_list args)
 	else if (format == '%')
 		count += ft_putchar('%');
 	else if (format == 'u')
-		ft_putunsign(va_arg(args, size_t));
+		count += ft_putunsign(va_arg(args, size_t));
 	else if (format == 'x' || format == 'X')
 		count += ft_puthex(va_arg(args, size_t), format);
 	else if (format == 'p')
-	{
-		/* add logic for null pointer */
-		write (1, "0x", 2);
-		count += 2;
-		count += ft_puthex(va_arg(args, size_t), 'x');
-	}
+		count += ft_putpointer(va_arg(args, size_t));
 	else
 		count += ft_putchar(format);
 	return (count);
 }
 
-int ft_printf(const char *str, ...)
+int	ft_printf(const char *str, ...)
 {
 	va_list	args;
-	int	i;
-	int	count;
+	int		i;
+	int		count;
 
 	i = 0;
 	count = 0;
@@ -61,18 +56,17 @@ int ft_printf(const char *str, ...)
 	return (count);
 }
 
-int	main(void)
+/*int	main(void)
 {
 	int	digits;
 	digits = 0;
 	char *s;
 	s = NULL;
-	/*My printf*/
+
 	printf("My printf:\n");
 	digits = ft_printf("This is a string %p\n", s);
 	printf("Chars printed: %d\n\n", digits);
-	/*Original printf*/
 	printf("Original printf:\n");
 	digits = printf("This is a string %p\n", s);
 	printf("Chars printed: %d\n", digits);
-}
+}*/
