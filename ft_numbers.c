@@ -11,9 +11,8 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
 /* Functions to parse numbers*/
-int	ft_putnbr(int n)
+int	ft_putnbr(long n)
 {
 	int	count;
 
@@ -26,7 +25,7 @@ int	ft_putnbr(int n)
 	if (n < 0)
 	{
 		write (1, "-", 1);
-		return (count + ft_putnbr(-n));
+		return (1 + ft_putnbr(-n));
 	}
 	if (n > 9)
 	{
@@ -51,38 +50,39 @@ int	ft_putunsign(unsigned int n)
 		return (count + ft_putchar (n + '0'));
 }
 
-int	ft_puthex(size_t n, char c)
+int	ft_puthex(unsigned long long n, char c)
 {
-	char *hex = "0123456789abcdef";
-	size_t	base;
-	int		count;
+	unsigned long long	base;
+	int					count;
 
 	count = 0;
 	base = 16;
-	if (n > base)
+	if (n >= base)
 	{
 		count += ft_puthex(n / base, c);
 		return (count + ft_puthex(n % base, c));
 	}
 	else
 	{
-		if (c == 'x')
-			return (count + ft_putchar(hex[n]));
+		if (n < 10)
+			return (ft_putchar(n + '0'));
+		else if (n >= 10 && c == 'x')
+			return (ft_putchar(n + 'a' - 10));
 		else
-			return (count + ft_putchar(ft_toupper(hex[n])));
+			return (ft_putchar(n + 'A' - 10));
 	}
 	return (count);
 }
 
-int	ft_putpointer(size_t n)
+int	ft_putpointer(unsigned long long n)
 {
 	int	count;
 
 	count = 0;
 	if (n == 0)
 	{
-		write (1, "(null)", 6);
-		return (6);
+		write (1, "(nil)", 5);
+		return (5);
 	}
 	count += 2;
 	write (1, "0x", 2);

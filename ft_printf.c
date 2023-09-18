@@ -12,27 +12,27 @@
 
 #include "ft_printf.h"
 
-int	ft_parseformat(char format, va_list args)
+int	ft_parseformat(char f, va_list args)
 {
 	int	count;
 
 	count = 0;
-	if (format == 'c')
+	if (f == 'c')
 		count += ft_putchar(va_arg(args, int));
-	else if (format == 's')
+	else if (f == 's')
 		count += ft_putstr(va_arg(args, char *));
-	else if (format == 'd' || format == 'i')
-		count += ft_putnbr(va_arg(args, int));
-	else if (format == '%')
+	else if (f == 'd' || f == 'i')
+		count += ft_putnbr((long)va_arg(args, int));
+	else if (f == '%')
 		count += ft_putchar('%');
-	else if (format == 'u')
+	else if (f == 'u')
 		count += ft_putunsign(va_arg(args, size_t));
-	else if (format == 'x' || format == 'X')
-		count += ft_puthex(va_arg(args, size_t), format);
-	else if (format == 'p')
-		count += ft_putpointer(va_arg(args, size_t));
+	else if (f == 'x' || f == 'X')
+		count += ft_puthex((unsigned long long)va_arg(args, unsigned int), f);
+	else if (f == 'p')
+		count += ft_putpointer(va_arg(args, unsigned long long));
 	else
-		count += ft_putchar(format);
+		count += ft_putchar(f);
 	return (count);
 }
 
@@ -56,17 +56,41 @@ int	ft_printf(const char *str, ...)
 	return (count);
 }
 
-/*int	main(void)
+/*#include <limits.h>
+
+int	main(void)
 {
 	int	digits;
 	digits = 0;
 	char *s;
-	s = NULL;
+	s = "string!";
 
-	printf("My printf:\n");
-	digits = ft_printf("This is a string %p\n", s);
-	printf("Chars printed: %d\n\n", digits);
-	printf("Original printf:\n");
-	digits = printf("This is a string %p\n", s);
+	digits = ft_printf("ft_printf: This is a string %p\n", s);
+	printf("Chars printed: %d\n", digits);
+	digits = printf("og_printf: This is a string %p\n", s);
+	printf("Chars printed: %d\n", digits);
+
+	digits = ft_printf("ft_printf: numbers %i %d %i %i\n", \
+	100, 50, INT_MAX, INT_MIN);
+	printf("Chars printed: %d\n", digits);
+	digits = printf("og_printf: numbers %i %d %i %i\n", \
+	100, 50, INT_MAX, INT_MIN);
+	printf("Chars printed: %d\n", digits);
+
+	digits = ft_printf("ft_printf: numbers %d %d %d\n", -1, -9, -10);
+	printf("Chars printed: %d\n", digits);
+	digits = printf("og_printf: numbers %d %d %d\n", -1, -9, -10);
+	printf("Chars printed: %d\n", digits);
+
+	digits = ft_printf("ft_printf: numbers %x %x %x\n", 16, -200, INT_MAX);
+	printf("Chars printed: %d\n", digits);
+	digits = printf("og_printf: numbers %x %x %x\n", 16, -200, INT_MAX);
+	printf("Chars printed: %d\n", digits);
+
+	digits = ft_printf("ft_printf: unsigned %i, hex %x, hex cap %X\n", \
+	INT_MAX, INT_MIN, INT_MIN);
+	printf("Chars printed: %d\n", digits);
+	digits = printf("og_printf: unsigned %i, hex %x, hex cap %X\n", \
+	INT_MAX, INT_MIN, INT_MIN);
 	printf("Chars printed: %d\n", digits);
 }*/

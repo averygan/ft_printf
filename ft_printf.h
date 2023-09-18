@@ -22,14 +22,15 @@
 /*helper functions*/
 int	ft_putchar(char c);
 int	ft_putstr(char *s);
-int	ft_toupper(int c);
 
 /*parse numbers*/
-int	ft_putnbr(int n);
+int	ft_putnbr(long n);
 int	ft_putunsign(unsigned int n);
-int	ft_puthex(size_t n, char c);
-int	ft_putpointer(size_t n);
+int	ft_puthex(unsigned long long int n, char c);
+int	ft_putpointer(unsigned long long n);
 
+/* printf function */
+int	ft_parseformat(char format, va_list args);
 int	ft_printf(const char *str, ...);
 
 #endif
