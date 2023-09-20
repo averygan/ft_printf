@@ -26,7 +26,7 @@ int	ft_parseformat(char f, va_list args)
 	else if (f == '%')
 		count += ft_putchar('%');
 	else if (f == 'u')
-		count += ft_putunsign(va_arg(args, size_t));
+		count += ft_putunsign(va_arg(args, unsigned int));
 	else if (f == 'x' || f == 'X')
 		count += ft_puthex((unsigned long long)va_arg(args, unsigned int), f);
 	else if (f == 'p')
