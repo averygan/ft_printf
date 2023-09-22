@@ -30,7 +30,7 @@ int	ft_parseformat(char f, va_list args)
 	else if (f == 'x' || f == 'X')
 		count += ft_puthex((unsigned long long)va_arg(args, unsigned int), f);
 	else if (f == 'p')
-		count += ft_putpointer(va_arg(args, unsigned long long));
+		count += ft_putpointer((unsigned long long)va_arg(args, void *));
 	else
 		count += ft_putchar(f);
 	return (count);
