@@ -13,7 +13,7 @@
 #include "ft_printf.h"
 
 /*Helper functions for output*/
-int	ft_putchar(char c)
+int	ft_putchar(unsigned int c)
 {
 	write(1, &c, 1);
 	return (1);

@@ -18,7 +18,7 @@ int	ft_parseformat(char f, va_list args)
 
 	count = 0;
 	if (f == 'c')
-		count += ft_putchar(va_arg(args, int));
+		count += ft_putchar(va_arg(args, unsigned int));
 	else if (f == 's')
 		count += ft_putstr(va_arg(args, char *));
 	else if (f == 'd' || f == 'i')
@@ -28,7 +28,7 @@ int	ft_parseformat(char f, va_list args)
 	else if (f == 'u')
 		count += ft_putunsign(va_arg(args, unsigned int));
 	else if (f == 'x' || f == 'X')
-		count += ft_puthex((unsigned long long)va_arg(args, unsigned int), f);
+		count += ft_puthex(va_arg(args, unsigned int), f);
 	else if (f == 'p')
 		count += ft_putpointer((unsigned long long)va_arg(args, void *));
 	else

@@ -19,7 +19,7 @@
 # include <string.h>
 
 /*helper functions*/
-int	ft_putchar(char c);
+int	ft_putchar(unsigned int c);
 int	ft_putstr(char *s);
 
 /*parse numbers*/
