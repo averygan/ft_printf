@@ -30,7 +30,7 @@ int	ft_puthex(unsigned long long int n, char c);
 int	ft_putpointer(unsigned long long n);
 
 /* printf function */
-int	ft_parseformat(char format, va_list args);
+int	ft_parseformat(char f, va_list args);
 int	ft_printf(const char *str, ...);
 
 #endif
