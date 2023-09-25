@@ -6,11 +6,12 @@
 /*   By: agan <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 15:45:06 by agan              #+#    #+#             */
-/*   Updated: 2023/09/13 15:45:08 by agan             ###   ########.fr       */
+/*   Updated: 2023/09/25 11:25:21 by agan             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 /* Functions to parse numbers*/
 int	ft_putnbr(long n)
 {

@@ -32,4 +32,6 @@ clean:
 fclean: clean
 	${RM} ${NAME}
 
-re: fclean alls
+re: fclean all
+
+.PHONY: all clean fclean re
